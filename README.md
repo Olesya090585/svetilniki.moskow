@@ -1,5 +1,42 @@
-# Vue 3 + Vite
+# Svetilniki Moscow
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Описание проекта
+Веб-приложение для магазина светильников, разработанное с использованием Vue.js и Vite.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Технологии
+- Vue.js 3
+- Vite
+- SCSS
+- Docker
+
+## Установка и запуск
+
+### Предварительные требования
+- Node.js (версия 16+)
+- npm или yarn
+- Docker (опционально)
+
+### Локальная разработка
+```bash
+# Установка зависимостей
+npm install
+
+# Запуск сервера разработки
+npm run dev
+```
+
+### Запуск через Docker
+```bash
+# Сборка и запуск контейнеров
+docker-compose up -d
+```
+
+
+## Функциональность
+- Авторизация пользователей
+- Регистрация новых пользователей
+- Восстановление пароля
+- ...
+
+## Автор
+Варнакова Олеся
