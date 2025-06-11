@@ -1,0 +1,193 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+@use "../AuthModal.scss";
+
+.login-modal {
+  &__title {
+    @extend .auth-modal__title;
+  }
+
+  &__form {
+    @extend .auth-modal__form;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    @extend .auth-modal__input;
+
+    &.is-invalid {
+      background: #ffe9e9;
+    }
+  }
+
+  &__submit {
+    @extend .auth-modal__submit;
+  }
+
+  &__toggle-password {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__error {
+    color: $colorError;
+    font-size: $fontSizeXS;
+    margin-top: 4px;
+  }
+
+  &__remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+    font-size: $fontSizeS;
+    color: $colorText;
+  }
+
+  &__checkbox {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border: 1px solid $colorTextSecondary;
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+
+    &:checked {
+      border-color: $colorPrimary;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 8px;
+        top: 1px;
+        width: 5px;
+        height: 15px;
+        border: solid $colorPrimary;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+    }
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  &__link {
+    color: $colorTextSecondary;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      color: darken($colorTextSecondary, 10%);
+    }
+  }
+
+  &__switch {
+    font-family: $fontFamilySecondary;
+    font-weight: 400;
+    font-size: 16px;
+    border: none;
+    background-color: transparent;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: $colorGreen;
+    transition: color 0.2s ease;
+    cursor: pointer;
+  }
+
+  &__switch-link {
+    font-size: $fontSizeS;
+    color: $colorTextSecondary;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      color: darken($colorTextSecondary, 10%);
+    }
+  }
+
+  &__forgot {
+    font-family: $fontFamilySecondary;
+    font-size: $fontSizeXS;
+    font-weight: 400;
+    line-height: 100%;
+    color: $colorText;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease;    
+    margin-top: 58px;
+    background-color: transparent;
+    border: none;
+    display: block;
+    width: 100%;
+    text-align: center;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__input {
+      width: 100%;
+    }
+
+    &__submit {
+      width: 100%;
+    }
+
+    &__remember {
+      margin-top: 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__title {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    &__form {
+      gap: 15px;
+    }
+
+    &__forgot {
+      margin-top: 25px;
+    }
+  }
+}

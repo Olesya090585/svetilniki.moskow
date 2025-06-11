@@ -1,0 +1,65 @@
+@use "variables" as *;
+
+// Базовые стили для инпутов
+@mixin input-base {
+  width: 100%;
+  height: 40px;
+  padding: 8px 12px;
+  background: $colorBackground;
+  border: none;
+  border-radius: 5px;
+  font-family: $fontFamily;
+  font-size: $fontSizeS;
+  color: $colorText;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: $colorTextSecondary;
+  }
+}
+
+// Базовые стили для кнопок
+@mixin button-base {
+  height: 40px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  font-family: $fontFamily;
+  font-size: $fontSizeM;
+  color: $colorBrandWhite;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:disabled {
+    background: $colorDisabled;
+    cursor: not-allowed;
+  }
+}
+
+// Базовые стили для модальных окон
+@mixin modal-base {
+  position: relative;
+  padding: 30px;
+  background: $colorBrandWhite;
+  border-radius: 5px;
+  font-family: $fontFamilySecondary;
+}
+
+// Флекс центрирование
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Иконка
+@mixin icon-base($size: 24px) {
+  width: $size;
+  height: $size;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}

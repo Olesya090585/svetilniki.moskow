@@ -1,0 +1,23 @@
+// Цветовая палитра
+$colorBrandWhite: #ffffff;
+$colorGreyBlue: #d9e1e6;
+$colorGreenBlue: #2d7585;
+$colorGreen: #2d8569;
+$colorText: #30373d;
+$colorTextSecondary: #8a9d9f;
+$colorError: #ff0000;
+$colorBackground: #f1f6fc;
+$colorBackgroundHover: #e5edf7;
+$colorDisabled: #cccccc;
+$colorDark: #2b372b;
+$colorSecondary: #2d7585;  // Добавляем переменную для вторичного цвета
+$colorPrimary: #2d7585;  // Добавляем переменную для основного цвета
+$colorBorder: $colorGreyBlue;  // Добавляем переменную для цвета границ
+
+// Шрифты
+$fontFamily: "Inter", sans-serif;
+$fontFamilySecondary: "Microsoft Sans Serif", sans-serif;
+$fontSizeXS: 12px;
+$fontSizeS: 14px;
+$fontSizeM: 16px;
+$fontSizeL: 20px;

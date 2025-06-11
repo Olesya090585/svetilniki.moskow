@@ -1,0 +1,300 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+@use "../AuthModal.scss";
+
+.register-modal {
+  position: relative;
+  padding: 0px;
+  background: $colorBrandWhite;
+  border-radius: 5px;
+  font-family: $fontFamilySecondary;
+
+  &__title {
+    @extend .auth-modal__title;
+    font-family: $fontFamily;
+    font-weight: 500;
+    font-size: $fontSizeL;
+    line-height: 27px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: $colorDark;
+    text-transform: uppercase;
+  }
+
+  &__form {
+    @extend .auth-modal__form;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__user-type,
+  &__group {
+    position: relative;
+  }
+
+  &__user-type {
+    z-index: 2;
+    margin-bottom: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 6px;
+      pointer-events: none;
+      transition: transform 0.2s ease;
+      background: url('../../../assets/image/modals/arrow-down.svg') no-repeat center;
+    }
+
+    &:focus-within::after {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+
+  &__select {
+    @extend .auth-modal__input;
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%232B372B' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    transition: all 0.2s ease-in-out;
+
+    &:focus {
+      border-color: $colorGreenBlue;
+    }
+
+    &:hover {
+      background-color: $colorBackgroundHover;
+    }
+
+    option {
+      padding: 12px;
+      margin: 4px 0;
+      color: $colorDark;
+
+      &:hover {
+        background: $colorGreyBlue;
+      }
+    }
+  }
+
+  &__input {
+    @extend .auth-modal__input;
+
+    &.is-valid {
+      padding-right: 36px;
+    }
+
+    &.is-invalid {
+      border-color: $colorError;
+      background-color: rgba($colorError, 0.1);
+    }
+  }
+
+  &__error {
+    position: absolute;
+    left: 0;
+    bottom: -18px;
+    color: $colorError;
+    font-size: $fontSizeXS;
+  }
+
+  &__valid-icon {
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+    right: 12px;
+  }
+
+  &__captcha {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+
+    .captcha-mockup {
+      flex: 0 0 auto;
+      width: 145px;
+      height: 40px;
+      background: $colorDark;
+      border-radius: 5px;
+      @include flex-center;
+
+      &__text {
+        font-family: "Caveat";
+        font-size: 25px;
+        color: $colorBrandWhite;
+        letter-spacing: 1px;
+        line-height: 20px;
+        text-align: center;
+        font-style: italic;
+      }
+    }
+
+    .captcha-input {
+      @include input-base;
+    }
+  }
+
+  &__submit {
+    @extend .auth-modal__submit;
+    width: 175px;
+    margin-top: 20px;
+    background: $colorTextSecondary;
+
+    &:hover:not(.is-active) {
+      background: darken($colorTextSecondary, 10%);
+    }
+
+    &.is-active {
+      background: $colorGreenBlue;
+
+      &:hover {
+        background: $colorGreen;
+      }
+    }
+  }
+
+  &__hint {
+    font-size: $fontSizeXS;
+    color: $colorGreen;
+    text-align: center;
+    margin: 74px 0 0;
+  }
+
+  &__footer {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  &__switch {
+    font-size: $fontSizeS;
+    color: $colorGreenBlue;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__policy {
+    font-size: $fontSizeXS;
+    color: $colorTextSecondary;
+    text-align: center;
+    margin-top: 20px;
+
+    a {
+      color: $colorPrimary;
+      text-decoration: none;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: darken($colorPrimary, 10%);
+      }
+    }
+  }
+
+  &__separator {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 30px 0;
+    color: $colorTextSecondary;
+    font-size: $fontSizeS;
+
+    &::before,
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: $colorBorder;
+    }
+  }
+
+  &__social {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  &__social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $colorBackground;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: darken($colorBackground, 5%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__input,
+    &__select,
+    &__user-type &__select {
+      width: 100%;
+    }
+
+    &__captcha {
+      flex-direction: column;
+      gap: 10px;
+
+      .captcha-mockup,
+      .captcha-input {
+        width: 100%;
+      }
+    }
+
+    &__submit {
+      width: 100%;
+    }
+
+    max-width: 90%;
+    padding: 50px 20px 30px;
+
+    &__form {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__title {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    &__form {
+      gap: 15px;
+    }
+
+    &__hint {
+      margin-top: 40px;
+    }
+
+    max-width: 100%;
+    margin: 0 10px;
+
+    &__submit {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
+}

@@ -1,0 +1,185 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.auth-modal {
+  &-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+  }
+
+  position: relative;
+  max-width: 466px;
+  padding: 70px 70px 50px;
+  background: $colorBrandWhite;
+  border-radius: 10px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s ease;
+
+  &__back,
+  &__close {
+    position: absolute;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__back {
+    top: 20px;
+    left: 20px;
+    width: 25px;
+    height: 15px;
+    background-image: url("../../assets/image/modals/back.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__close {
+    top: 20px;
+    right: 20px;
+    width: 30px;
+  }
+
+  &__title {
+    font-family: $fontFamily;
+    font-weight: 500;
+    font-size: $fontSizeL;
+    line-height: 27px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: $colorDark;
+    text-transform: uppercase;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__input {
+    width: 326px;
+    height: 40px;
+    padding: 8px 12px;
+    background: $colorBackground;
+    border: none;
+    border-radius: 5px;
+    font-size: $fontSizeS;
+    
+    &::placeholder {
+      color: $colorTextSecondary;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__submit {
+    width: 175px;
+    height: 40px;
+    margin: 20px 0;
+    background: $colorGreenBlue;
+    border: none;
+    border-radius: 5px;
+    color: $colorBrandWhite;
+    font-size: $fontSizeS;
+    cursor: pointer;
+    align-self: center;
+    font-family: $fontFamily;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    padding: 0;
+    margin: 0;
+
+    &:hover {
+      background: $colorGreen;
+    }
+
+    &.is-active {
+      background: $colorPrimary;
+
+      &:hover {
+        background: darken($colorPrimary, 10%);
+      }
+    }
+
+    &:disabled {
+      background: $colorDisabled;
+      cursor: not-allowed;
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    max-width: 90%;
+    padding: 50px 20px 30px;
+
+    &__input {
+      width: 100%;
+    }
+
+    &__submit {
+      width: 100%;
+    }
+
+    &__back {
+      top: 15px;
+      left: 15px;
+    }
+
+    &__close {
+      top: 15px;
+      right: 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+    margin: 0 10px;
+    padding: 40px 15px 25px;
+
+    &__title {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    &__form {
+      gap: 15px;
+    }
+
+    &__submit {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
+}
