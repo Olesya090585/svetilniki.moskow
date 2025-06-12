@@ -3,19 +3,19 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('src/assets/fonts/Inter-Regular.ttf') format('truetype');
+  src: url('@/assets/fonts/Inter-Regular.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Microsoft Sans Serif';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('../assets/fonts/Microsoft-Sans-Serif.ttf') format('truetype');
+  src: url('@/assets/fonts/Microsoft-Sans-Serif.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Caveat';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('../assets/fonts/CaveatRegular.ttf') format('truetype');
+  src: url('@/assets/fonts/CaveatRegular.ttf') format('truetype');
 }

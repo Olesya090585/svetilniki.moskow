@@ -93,7 +93,7 @@ const handleSuccess = (data) => {
         v-if="currentForm === 'register' || currentForm === 'forgot-password'"
         @click="switchForm('login')"
       >
-        <img src="../../assets/image/modals/back.svg" alt="Назад" />
+        <img class="auth-modal__back-img" src="../../assets/image/modals/back.svg" alt="Назад" />
       </button>
 
       <button class="auth-modal__close" @click="handleClose">
