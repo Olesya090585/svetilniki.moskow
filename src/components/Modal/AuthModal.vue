@@ -87,7 +87,11 @@ const handleSuccess = (data) => {
 
 <template>
   <div v-if="isVisible" class="auth-modal-overlay" @click.self="handleClose">
-    <div class="auth-modal">
+    <div class="auth-modal"
+             :class="{
+       'auth-modal__down': currentForm === 'register',
+       'auth-modal__up': currentForm === 'login'
+     }">
       <button
         class="auth-modal__back"
         v-if="currentForm === 'register' || currentForm === 'forgot-password'"

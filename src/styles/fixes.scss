@@ -1,0 +1,39 @@
+/* Fixes for View Transitions API and media elements */
+
+/* Disable view transitions globally */
+::view-transition,
+::view-transition-group(*),
+::view-transition-image-pair(*),
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation: none !important;
+}
+
+/* Reset overflow on media elements */
+img,
+video,
+canvas {
+  &:not([style*="overflow:"]) {
+    overflow: hidden !important;
+  }
+  
+  &[style*="overflow:"] {
+    overflow: hidden !important;
+  }
+  
+  /* Ensure proper sizing */
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  
+  /* Prevent content from escaping bounds */
+  contain: paint;
+  content-visibility: auto;
+}
+
+/* Force proper overflow handling on containers */
+div, section, article, aside, main {
+  &:has(img, video, canvas) {
+    overflow: hidden;
+  }
+}

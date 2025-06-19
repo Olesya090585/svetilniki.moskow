@@ -4,8 +4,11 @@
 
 .auth-modal {
   position: relative;
+  margin-top: 75px;
+  // top: -110px;
   max-width: 466px;
   padding: 70px 70px 50px;
+  padding-bottom: 50px;
   background: $colorBrandWhite;
   border-radius: $border-radius-default;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
@@ -24,7 +27,14 @@
     z-index: 1000;
     animation: fadeIn 0.3s ease;
   }
-
+&__down{
+  margin-top: 55px;
+  height: 550px;
+}
+&__up{
+  margin-top: 75px;
+  height: 465px;
+}
   &__back,
   &__close {
     position: absolute;
@@ -78,9 +88,10 @@
   }
 
   &__input {
+    font-family: $fontFamilySecondary;
     width: 326px;
     height: 40px;
-    padding: 8px 12px;
+    padding: 10px 15px;
     background: $colorBackground;
     border: none;
     border-radius: 5px;
