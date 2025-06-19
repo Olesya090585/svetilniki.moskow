@@ -22,18 +22,36 @@ const validation = ref({
   login: false,
 });
 
+// Капча
+const captchaText = ref(generateCaptcha());
+const userCaptchaInput = ref('');
+const isCaptchaValid = ref(false);
+
+function generateCaptcha() {
+  const chars = 'abcdefghijkmnpqrstuvwxyz';
+  let result = '';
+  for (let i = 0; i < 6; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
+
+function refreshCaptcha() {
+  captchaText.value = generateCaptcha();
+  userCaptchaInput.value = '';
+}
+
+function validateCaptcha() {
+  return userCaptchaInput.value.toLowerCase() === captchaText.value.toLowerCase();
+}
+const checkCaptcha = () => {
+  isCaptchaValid.value = userCaptchaInput.value.toLowerCase() === captchaText.value.toLowerCase();
+};
+
 const isLoading = ref(false);
 const isDropdownOpen = ref(false);
 
-// const isFormEmpty = computed(() => {
-//   return (
-//     !form.value.fullName &&
-//     !form.value.phone &&
-//     !form.value.login &&
-//     !form.value.userType &&
-//     !form.value.captcha
-//   );
-// });
+
 const userTypes = [
   { value: "user", label: "Дизайнер" },
   { value: "designer", label: "Партнер" },
@@ -67,6 +85,10 @@ onBeforeUnmount(() => {
 });
 
 const handleSubmit = async () => {
+  if (!validateCaptcha()) {
+    refreshCaptcha();
+    return;
+  }
   isLoading.value = true;
   try {
     // Здесь будет запрос к API
@@ -131,28 +153,9 @@ const formatPhone = (event) => {
   validation.value.phone = validatePhone(value);
 };
 
-// const captchaText = ref('');
-// const userInput = ref('');
-// // Генерация случайной капчи
-// const generateCaptcha = () => {
-//   const chars = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789';
-//   let result = '';
-//   const length = 7; // Длина капчи
-  
-//   for (let i = 0; i < length; i++) {
-//     result += chars.charAt(Math.floor(Math.random() * chars.length));
-//   }
-  
-//   captchaText.value = result;
-// };
 
-// isLoadingCapcha(() => {
-//   generateCaptcha();
-// });
-// // Проверка капчи
-// const checkCaptcha = () => {
-//   return userInput.value.toLowerCase() === captchaText.value.toLowerCase();
-// };
+
+
 </script>
 
 <template>
@@ -210,12 +213,7 @@ const formatPhone = (event) => {
       </div>
 
       <div class="register-modal__user-type register-modal__group">
-        <!-- <select v-model="form.userType" class="register-modal__select" required>
-          <option value="" disabled selected>Пользователь</option>
-          <option value="designer">Дизайнер</option>
-          <option value="partner">Партнер</option>
-          <option value="user">Пользователь</option>
-        </select> -->
+
         <div class="register-modal__user-type">
         <div 
           class="register-modal__user-type-toggle"
@@ -247,16 +245,28 @@ const formatPhone = (event) => {
     'register-modal__captcha-up': !isDropdownOpen
   }"
        >
-        <div class="captcha-mockup">
-          <span class="captcha-mockup__text">sdhgfjh</span>
+        <div class="captcha-mockup" @click="refreshCaptcha">
+          <span class="captcha-mockup__text" v-for="(char, index) in captchaText" 
+            :key="index"
+            :style="{
+              transform: `rotate(${Math.random() * 15 - 7.5}deg)`,
+              // color: `hsl(${Math.random() * 360}, 70%, 45%)`
+            }">{{ char }}</span>
         </div>
         <input
-          v-model="form.captcha"
+          v-model="userCaptchaInput"
           type="text"
           class="register-modal__input captcha-input"
           placeholder="Введите символы"
           required
+          @input="checkCaptcha"
         />
+        <span
+            v-if="isCaptchaValid"
+            class="captcha-input__valid-icon"
+          ><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 6L9 17L4 12" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg></span>
       </div>
       <button
         type="submit"

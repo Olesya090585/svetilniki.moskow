@@ -1,2 +1,6 @@
-@use 'src/styles/normalize.css' as *;
-@use 'src/styles/fonts.scss' as *;
+@use './fixes.scss' as *;
+@use './normalize.scss' as *;
+@use './fonts.scss' as *;
+@use './variables.scss' as *;
+@use './mixins.scss' as *;
+
