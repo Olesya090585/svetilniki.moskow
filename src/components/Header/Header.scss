@@ -25,6 +25,7 @@
       margin: auto, 0;
       gap: 189px;
       background-color: $colorGreyBlue;
+
       &-nav {
         max-width: 1440px;
       }
@@ -71,7 +72,7 @@
     border-radius: 5px;
     padding: 0;
     font-size: 16px;
-    color:$colorBrandWhite;
+    color: $colorBrandWhite;
     border: none;
     cursor: pointer;
     display: flex;
@@ -251,6 +252,184 @@
     }
     &-cart {
       background-image: url("../../assets/image/header/basket.svg");
+    }
+  }
+
+  @media (max-width: 1620px) {
+    .header__container-wrapper {
+      gap: 100px;
+    }
+    .header__logo {
+      margin-right: 23px;
+    }
+    .header__block {
+      gap: 20px;
+    }
+    .header__utilities {
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 1430px) {
+    .header__container-wrapper {
+      gap: 30px;
+    }
+    .header__nav-list {
+      gap: 15px;
+    }
+    .header__logo {
+      margin-right: 23px;
+    }
+
+    .header__block {
+      gap: 20px;
+    }
+    .header__search-input {
+      width: 210px;
+    }
+    .header__contacts {
+      width: 280px;
+    }
+    .header__phone {
+      font-size: 14px;
+    }
+    .header__utilities {
+      gap: 20px;
+    }
+    .header__phone-description {
+      font-size: 12px;
+    }
+  }
+@media (max-width: 1390px) {
+   .header__container-wrapper {
+      gap: 80px;
+    }
+    .header__container-nav{
+      width: 77%;
+    }
+    .header__nav{
+      width: 100%;
+    }
+     .header__nav-link {
+      font-size: $fontSizeS;
+    }
+    .header__nav-item-location {
+      width: 15px;
+      height: 15px;
+    }
+    .header__nav-list {
+      width: 100%;
+      gap: 0px;
+      white-space: nowrap;
+    }
+       .header__actions {
+      justify-content: space-between;
+      min-width: 904px;
+      margin: 0 auto;
+    }
+     .header__logo {
+      margin-right: 30px;
+      min-width: 116px;
+    }
+
+      .header__catalog-button {
+      width: 50px;
+      color: transparent;
+      background-size: 20px 20px;
+      padding: 7.5px 9px 7.5px 9px;
+      background-position: center center;
+      margin-right: 10px;
+    }
+    }
+  @media (max-width: 1196px) {
+    .header__container-wrapper {
+      gap: 75px;
+    }
+    .header__nav {
+      width: 789px;
+    }
+    .header__nav-list {
+      gap: 20px;
+      white-space: nowrap;
+    }
+
+    .header__nav-link {
+      font-size: $fontSizeS;
+    }
+    .header__nav-item-location {
+      width: 15px;
+      height: 15px;
+    }
+    .header__login-button {
+      background-image: url("../../assets/image/header/login.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: transparent;
+      width: 40px;
+      height: 40px;
+      border: none;
+      color: transparent;
+    }
+    .header__actions {
+      justify-content: space-between;
+      height: 75px;
+      width: 904px;
+      margin: 0 auto;
+    }
+    .header__logo {
+      margin-right: 30px;
+      min-width: 116px;
+      height: 30px;
+    }
+    .header__logo-image {
+      width: 100%;
+      height: auto;
+      max-height: 30px;
+      object-fit: contain;
+    }
+    .header__catalog-button {
+      min-width: 50px;
+      height: 35px;
+      color: transparent;
+      background-size: 20px 20px;
+      padding: 7.5px 9px 7.5px 9px;
+      background-position: center center;
+      margin-right: 10px;
+    }
+    .header__block {
+      gap: 29px;
+    }
+    .header__block:last-child {
+      gap: 24px;
+    }
+    .header__search-input {
+      width: 160px;
+      height: 35px;
+      font-size: $fontSizeS;
+    }
+    .header__search-button {
+      width: 50px;
+      height: 35px;
+      background-size: 20px 20px;
+    }
+    .header__contacts {
+      min-width: 269px;
+      gap: 5px;
+      justify-content: space-around;
+    }
+    .header__phones {
+      gap: 0px;
+    }
+    .header__phone {
+      align-items: start;
+      letter-spacing: 0%;
+    }
+
+    .header__utilities-styles {
+      width: 40px;
+      height: 40px;
+      color: transparent;
+      align-self: flex-end;
     }
   }
 }

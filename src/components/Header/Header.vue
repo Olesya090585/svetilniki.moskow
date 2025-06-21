@@ -70,7 +70,7 @@
           </div>
           <div class="header__contacts">
             <div class="header__phones">
-              <a href="tel:88001004453" class="header__phone">8 (800) 100-44-53</a>
+              <a href="tel:88001004453" class="header__phone">8 (800) 100-44-53 </a>
               <span class="header__phone-description">Бесплатно по России</span>
             </div>
             <div class="header__phones">
