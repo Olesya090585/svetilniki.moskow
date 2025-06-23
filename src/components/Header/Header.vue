@@ -49,15 +49,16 @@
         </button>
       </div>
       <div class="header__actions">
-        <div class="header__logo">
-          <img
-            src="../../assets/image/header/logo.svg"
-            alt="Логотип магазина светильников"
-            class="header__logo-image"
-          />
-        </div>
+        <div class="header__actions-wrapper">
+          <div class="header__logo">
+            <img
+              src="../../assets/image/header/logo.svg"
+              alt="Логотип магазина светильников"
+              class="header__logo-image"
+            />
+          </div>
 
-        <button class="header__catalog-button" aria-label="Открыть каталог">Каталог</button>
+          <button class="header__catalog-button" aria-label="Открыть каталог">Каталог</button>
         <div class="header__block">
           <div class="header__search-wrapper">
             <input
@@ -99,6 +100,7 @@
             </button>
           </div>
         </div>
+        </div> <!-- Закрываем header__actions-wrapper -->
       </div>
     </div>
   </header>
