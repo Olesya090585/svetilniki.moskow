@@ -100,7 +100,7 @@
             </button>
           </div>
         </div>
-        </div> <!-- Закрываем header__actions-wrapper -->
+        </div> 
       </div>
     </div>
   </header>
