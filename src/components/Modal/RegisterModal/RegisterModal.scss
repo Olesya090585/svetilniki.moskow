@@ -336,15 +336,15 @@
       width: 100%;
     }
 
-    &__captcha {
-      flex-direction: column;
-      gap: 10px;
+    // &__captcha {
+    //   // flex-direction: column;
+    //   // gap: 10px;
 
-      .captcha-mockup,
-      .captcha-input {
-        width: 100%;
-      }
-    }
+    //   .captcha-mockup,
+    //   .captcha-input {
+    //     width: 100%;
+    //   }
+    // }
 
     &__submit {
       width: 100%;
