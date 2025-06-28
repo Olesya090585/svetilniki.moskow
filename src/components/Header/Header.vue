@@ -193,13 +193,13 @@ const performSearch = () => {
                 class="header__utilities-styles header__utilities-favorites"
                 aria-label="Избранные товары"
               >
-                Нравится
+                <span v-if="!isTablet">Нравится</span>
               </button>
               <button
                 class="header__utilities-styles header__utilities-cart"
                 aria-label="Корзина"
               >
-                Корзина
+                <span v-if="!isTablet">Корзина</span>
               </button>
             </div>
           </div>
