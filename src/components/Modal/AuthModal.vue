@@ -32,12 +32,12 @@ watch(
 );
 
 const resetAllForms = () => {
-  // Создаем refs на компоненты форм
+  // Create refs to form components
   const loginModalRef = ref(null);
   const registerModalRef = ref(null);
   const forgotPasswordModalRef = ref(null);
 
-  // Сбрасываем данные форм
+  // Resetting form data
   if (loginModalRef.value) {
     loginModalRef.value.form = { login: "", password: "", remember: false };
   }
@@ -54,7 +54,7 @@ const resetAllForms = () => {
     forgotPasswordModalRef.value.form = { phone: "" };
   }
 
-  // Сбрасываем текущую форму на login
+  // Reset the current form to login
   currentForm.value = "login";
   phone.value = "";
 };
