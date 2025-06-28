@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from "vue"
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 
 const emit = defineEmits(["switch-form", "success"]);
 const isFormEmpty = ref(false);
@@ -24,12 +24,12 @@ const validation = ref({
 
 // Капча
 const captchaText = ref(generateCaptcha());
-const userCaptchaInput = ref('');
+const userCaptchaInput = ref("");
 const isCaptchaValid = ref(false);
 
 function generateCaptcha() {
-  const chars = 'abcdefghijkmnpqrstuvwxyz';
-  let result = '';
+  const chars = "abcdefghijkmnpqrstuvwxyz";
+  let result = "";
   for (let i = 0; i < 6; i++) {
     result += chars.charAt(Math.floor(Math.random() * chars.length));
   }
@@ -38,19 +38,21 @@ function generateCaptcha() {
 
 function refreshCaptcha() {
   captchaText.value = generateCaptcha();
-  userCaptchaInput.value = '';
+  userCaptchaInput.value = "";
 }
 
 function validateCaptcha() {
-  return userCaptchaInput.value.toLowerCase() === captchaText.value.toLowerCase();
+  return (
+    userCaptchaInput.value.toLowerCase() === captchaText.value.toLowerCase()
+  );
 }
 const checkCaptcha = () => {
-  isCaptchaValid.value = userCaptchaInput.value.toLowerCase() === captchaText.value.toLowerCase();
+  isCaptchaValid.value =
+    userCaptchaInput.value.toLowerCase() === captchaText.value.toLowerCase();
 };
 
 const isLoading = ref(false);
 const isDropdownOpen = ref(false);
-
 
 const userTypes = [
   { value: "user", label: "Дизайнер" },
@@ -59,7 +61,10 @@ const userTypes = [
 ];
 
 const selectedUserType = computed(() => {
-  return userTypes.find(type => type.value === form.value.userType)?.label || "Пользователь";
+  return (
+    userTypes.find((type) => type.value === form.value.userType)?.label ||
+    "Пользователь"
+  );
 });
 
 const toggleDropdown = () => {
@@ -71,17 +76,17 @@ const selectUserType = (type) => {
 };
 
 const closeDropdown = (event) => {
-  if (!event.target.closest('.register-modal__user-type')) {
+  if (!event.target.closest(".register-modal__user-type")) {
     isDropdownOpen.value = false;
   }
 };
 // Добавляем обработчик клика по документу
 onMounted(() => {
-  document.addEventListener('click', closeDropdown);
+  document.addEventListener("click", closeDropdown);
 });
 
 onBeforeUnmount(() => {
-  document.removeEventListener('click', closeDropdown);
+  document.removeEventListener("click", closeDropdown);
 });
 
 const handleSubmit = async () => {
@@ -152,10 +157,6 @@ const formatPhone = (event) => {
   form.value.phone = value;
   validation.value.phone = validatePhone(value);
 };
-
-
-
-
 </script>
 
 <template>
@@ -174,13 +175,20 @@ const formatPhone = (event) => {
             required
             @input="validateField('fullName')"
           />
-          <span
-            v-if="validation.fullName"
-            class="register-modal__valid-icon"
-          ><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 6L9 17L4 12" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg></span>
-
+          <span v-if="validation.fullName" class="register-modal__valid-icon"
+            ><svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20 6L9 17L4 12"
+                stroke="#4CAF50"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              /></svg
+          ></span>
         </div>
       </div>
 
@@ -198,60 +206,70 @@ const formatPhone = (event) => {
             required
             @input="formatPhone"
           />
-          <span
-            v-if="validation.phone"
-            class="register-modal__valid-icon"
-          >
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 6L9 17L4 12" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg></span>
-            <span v-if="errors.phone" class="register-modal__error">{{
-          errors.phone
-        }}</span>
+          <span v-if="validation.phone" class="register-modal__valid-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20 6L9 17L4 12"
+                stroke="#4CAF50"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              /></svg
+          ></span>
+          <span v-if="errors.phone" class="register-modal__error">{{
+            errors.phone
+          }}</span>
         </div>
-      
       </div>
 
       <div class="register-modal__user-type register-modal__group">
-
         <div class="register-modal__user-type">
-        <div 
-          class="register-modal__user-type-toggle"
-          :class="{ 'is-open': isDropdownOpen }"
-          @click.stop="toggleDropdown"
-        >
-          {{ selectedUserType }}
-        </div>
-        <div 
-          class="register-modal__user-type-dropdown"
-          :class="{ 'is-open': isDropdownOpen }"
-        >
           <div
-            v-for="type in userTypes"
-            :key="type.value"
-            class="register-modal__user-type-option"
-            :class="{ 'is-selected': form.userType === type.value }"
-            @click.stop="selectUserType(type.value)"
+            class="register-modal__user-type-toggle"
+            :class="{ 'is-open': isDropdownOpen }"
+            @click.stop="toggleDropdown"
           >
-            {{ type.label }}
+            {{ selectedUserType }}
+          </div>
+          <div
+            class="register-modal__user-type-dropdown"
+            :class="{ 'is-open': isDropdownOpen }"
+          >
+            <div
+              v-for="type in userTypes"
+              :key="type.value"
+              class="register-modal__user-type-option"
+              :class="{ 'is-selected': form.userType === type.value }"
+              @click.stop="selectUserType(type.value)"
+            >
+              {{ type.label }}
+            </div>
           </div>
         </div>
       </div>
-      </div>
 
-      <div class="register-modal__captcha"
+      <div
+        class="register-modal__captcha"
         :class="{
-    'register-modal__captcha-down': isDropdownOpen,
-    'register-modal__captcha-up': !isDropdownOpen
-  }"
-       >
+          'register-modal__captcha-down': isDropdownOpen,
+          'register-modal__captcha-up': !isDropdownOpen,
+        }"
+      >
         <div class="captcha-mockup" @click="refreshCaptcha">
-          <span class="captcha-mockup__text" v-for="(char, index) in captchaText" 
+          <span
+            class="captcha-mockup__text"
+            v-for="(char, index) in captchaText"
             :key="index"
             :style="{
               transform: `rotate(${Math.random() * 15 - 7.5}deg)`,
               // color: `hsl(${Math.random() * 360}, 70%, 45%)`
-            }">{{ char }}</span>
+            }"
+            >{{ char }}</span
+          >
         </div>
         <input
           v-model="userCaptchaInput"
@@ -261,12 +279,20 @@ const formatPhone = (event) => {
           required
           @input="checkCaptcha"
         />
-        <span
-            v-if="isCaptchaValid"
-            class="captcha-input__valid-icon"
-          ><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 6L9 17L4 12" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg></span>
+        <span v-if="isCaptchaValid" class="captcha-input__valid-icon"
+          ><svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20 6L9 17L4 12"
+              stroke="#4CAF50"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            /></svg
+        ></span>
       </div>
       <button
         type="submit"
@@ -278,11 +304,13 @@ const formatPhone = (event) => {
       </button>
     </form>
 
-    <p class="register-modal__hint"
-          :class="{
-    'register-modal__hint-down': isDropdownOpen,
-    'register-modal__hint-up': !isDropdownOpen
-  }">
+    <p
+      class="register-modal__hint"
+      :class="{
+        'register-modal__hint-down': isDropdownOpen,
+        'register-modal__hint-up': !isDropdownOpen,
+      }"
+    >
       Пароль будет отправлен на указанный номер телефона
     </p>
   </div>

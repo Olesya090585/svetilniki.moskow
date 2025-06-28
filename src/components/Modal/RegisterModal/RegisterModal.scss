@@ -31,97 +31,97 @@
     gap: 20px;
   }
 
-&__user-type {
-  position: relative;
-  width: 100%;
+  &__user-type {
+    position: relative;
+    width: 100%;
 
     // Убираем стандартное выделение при фокусе
     &:focus {
       outline: none;
-      border-color: #007AFF;
+      border-color: #007aff;
     }
-    
+
     // Убираем синее выделение при клике (для WebKit браузеров)
     -webkit-tap-highlight-color: transparent;
-    
+
     // Убираем синее выделение для Firefox
     &:-moz-focusring {
       color: transparent;
       text-shadow: 0 0 0 #000;
     }
-    
+
     // Убираем синюю рамку для IE/Edge
     &::-ms-expand {
       display: none;
     }
-  // margin-bottom: 20px;
-  
-  &-toggle {
-    @extend .auth-modal__input;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    user-select: none;
-    padding-right: 40px;
-    position: relative;
-    
-    &::after {
-      content: url('../../../assets/image/modals/arrow.svg');
-      width: 25px;
-      height: 25px;
+    // margin-bottom: 20px;
+
+    &-toggle {
+      @extend .auth-modal__input;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      padding-right: 40px;
+      position: relative;
+
+      &::after {
+        content: url("../../../assets/image/modals/arrow.svg");
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        text-align: center;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: transform 0.2s ease;
+        color: $colorText;
+      }
+
+      &.is-open::after {
+        transform: translateY(-50%) rotate(180deg);
+      }
+    }
+
+    &-dropdown {
       position: absolute;
-      text-align: center;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      transition: transform 0.2s ease;
-      color: $colorText;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      font-family: $fontFamily;
+      font-size: $fontSizeS;
+      background: $colorBrandWhite;
+      border: 1px solid $colorBorder;
+      border-top: none;
+      border-radius: 0 0 5px 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, opacity 0.2s ease;
+      opacity: 0;
+
+      &.is-open {
+        max-height: 200px;
+        opacity: 1;
+      }
     }
-    
-    &.is-open::after {
-      transform: translateY(-50%) rotate(180deg);
-    }
-  }
-  
-  &-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    font-family: $fontFamily;
-    font-size: $fontSizeS;
-    background: $colorBrandWhite;
-    border: 1px solid $colorBorder;
-    border-top: none;
-    border-radius: 0 0 5px 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 10;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, opacity 0.2s ease;
-    opacity: 0;
-    
-    &.is-open {
-      max-height: 200px;
-      opacity: 1;
-    }
-  }
-  
-  &-option {
-    padding: 5px 15px;
-    cursor: pointer;
-    transition: background 0.2s ease;
-    
-    &:hover {
-      background: $colorBackgroundHover;
-    }
-    
-    &.is-selected {
-      background: $colorGreyBlue;
+
+    &-option {
+      padding: 5px 15px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+
+      &:hover {
+        background: $colorBackgroundHover;
+      }
+
+      &.is-selected {
+        background: $colorGreyBlue;
+      }
     }
   }
-}
   &__input {
     @extend .auth-modal__input;
 
@@ -142,7 +142,7 @@
     color: $colorError;
     font-size: $fontSizeXS;
   }
-&__input-wrapper {
+  &__input-wrapper {
     position: relative;
     width: 100%;
     display: flex;
@@ -159,53 +159,47 @@
     top: 13px;
     right: -15px;
   }
-.captcha-input{
-  position: relative;
-     width: 100%;
+  .captcha-input {
+    position: relative;
+    width: 100%;
     display: flex;
     flex-direction: column;
-  &__valid-icon{
-     width: 15px;
-    height: 15px;
-    color: $colorGreen;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    position: absolute;
-    top: 193px;
-    right: -15px;
+    &__valid-icon {
+      width: 15px;
+      height: 15px;
+      color: $colorGreen;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      position: absolute;
+      top: 193px;
+      right: -15px;
+    }
   }
-}
   &__captcha {
     display: flex;
     gap: 20px;
     align-items: center;
     margin: 0;
     padding: 0;
-    &-down{
+    &-down {
       padding-bottom: 40px;
     }
-    &-up{
+    &-up {
       padding-bottom: 0px;
     }
     .captcha-mockup {
-      // flex: 0 0 auto;
-      // width: 145px;
-      // height: 40px;
-      // background: $colorDark;
-      // border-radius: 5px;
-      // @include flex-center;
       position: relative;
-    flex: 0 0 145px;
-    height: 40px;
-    background: $colorDark;
-    border-radius: 5px;
-     color: $colorBrandWhite;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    overflow: hidden;
+      flex: 0 0 145px;
+      height: 40px;
+      background: $colorDark;
+      border-radius: 5px;
+      color: $colorBrandWhite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      overflow: hidden;
 
       &__text {
         font-family: "Caveat";
@@ -247,11 +241,11 @@
     color: $colorGreen;
     text-align: center;
     margin: 74px 0 0;
-     &-down{
+    &-down {
       margin: 44px 0 0;
     }
-    &-up{
-       margin: 74px 0 0;
+    &-up {
+      margin: 74px 0 0;
     }
   }
 
@@ -301,7 +295,7 @@
 
     &::before,
     &::after {
-      content: '';
+      content: "";
       flex: 1;
       height: 1px;
       background: $colorBorder;
@@ -342,15 +336,15 @@
       width: 100%;
     }
 
-    &__captcha {
-      flex-direction: column;
-      gap: 10px;
+    // &__captcha {
+    //   // flex-direction: column;
+    //   // gap: 10px;
 
-      .captcha-mockup,
-      .captcha-input {
-        width: 100%;
-      }
-    }
+    //   .captcha-mockup,
+    //   .captcha-input {
+    //     width: 100%;
+    //   }
+    // }
 
     &__submit {
       width: 100%;
